@@ -1,0 +1,1159 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+
+    <link href="{% static 'vendors/line-icon/css/simple-line-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'vendors/elegant-icon/style.css' %}" rel="stylesheet">
+
+    <link href="{% static 'vendors/bootstrap-selector/css/bootstrap-select.min.css' %}" rel="stylesheet">
+
+
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+    <link href="{% static 'vendors/owl-carousel/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100i,200,400&display=swap" rel="stylesheet">
+
+
+    <title>Ace Readymade-Online Shopping</title>
+</head>
+<body>
+
+<!-- Top header start -->
+
+<div class="top_header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h1>WELCOME TO ACE READYMADE</h1>
+            </div>
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex flex-row-reverse bd-highlight">
+                    <div class="p-2 bd-highlight"><a href="faqs.php"> FAQS</a></div>
+                    <div class="p-2 bd-highlight"><a href="{% url 'acereadymade_app:contact' %}">CONTACT US</a></div>
+                    <div class="p-2 bd-highlight"><a href="wishlist">WISHLIST</a></div>
+
+
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+                            data-whatever="@mdo">
+                        <div class="p-2 bd-highlight"><a href="#">
+                            <g></g>
+                            NEWSLETTER</a></div>
+                    </button>
+
+
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel"><b>
+                                        <div class="newslett"> HEY YOU, SIGN UP AND CONNECT TO ACE READYMADE
+                                    </b>
+                                        <p>Be the first to learn about our latest trends and get exclusive offers</p>
+                                </div>
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="recipient-name"
+                                               placeholder="Your Email Address">
+                                    </div>
+
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary">Send message</button>
+                            </div>
+                            <div class="newspag"> Will be used in accordance with our <b>Privacy Policy</b></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="p-2 bd-highlight">
+                    <g><a href="https://www.facebook.com/acereadymade.com.np/">f</a></g>
+                    <g><a href="#">y</a></g>
+                    <g><a href="https://www.instagram.com/shaileshwori.impex/">i</a></g>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<!-- Top header end -->
+
+
+<!-- Logo Start -->
+
+
+<div class="logo">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <a href="{% url 'acereadymade_app:index' %}"><img src="{% static 'images/flogo.png' %}"
+                                                                  class="img-fluid" alt="Responsive image"></a>
+            </div>
+            <div class="col-md-6">
+                <form method='GET' action="{% url 'search:searchResult' %}">
+                <div class="input-group mb-3">
+                    <div class="input-group">
+                        <input type="text" name="q" placeholder="Search for products" class="form-control"
+                               aria-label="Text  input with dropdown button">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">SELECT CATEGORY
+                            </button>
+
+
+                            <div class="dropdown-menu">
+                                {% for category in categories %}
+                                <a class="dropdown-item" href="{% url 'acereadymade_app:product_list_by_category' category.id category.slug %}">{{ category.name }}</a>
+                                {% endfor %}
+                            </div>
+                            <form method='GET' action="{% url 'search:searchResult' %}">
+                            <button type="submit" value="{{ request.GET.q }}" class="btn btn-outline-dark"><b></b></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+            <div class="col-md-2">
+                {% if not user.is_authenticated %}
+                <p class="text-uppercase"><a href="{% url 'acereadymade_app:login' %}">LOGIN / REGISTER</a></p>
+
+                {% else %}
+                <p class="text-uppercase"><a href="{% url 'acereadymade_app:login' %}">Hi {{ user.username }}</a></p>
+
+                {% endif %}
+            </div>
+
+<!--            view cart-->
+                    <div class="col-md-1">
+                        <div class="modal01">
+                            <div class="btn-group dropleft">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                    
+                                    <g>{{ total_item }}</g>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <div class="gropcls">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <h1>{{ total_item }} ITEMS</h1>
+                                            </div>
+                                            <div class="col-md-7">
+                                                {% if user.is_authenticated %}
+                                                <h1><a href="{% url 'cart:cart_detail' %}">VIEW CART</a></h1>
+                                                {% else %}
+                                                <h1><a href="{% url 'acereadymade_app:login' %}">VIEW CART</a></h1>
+                                                {% endif %}
+                                            </div>
+                                            <div class="col-md-12">
+<!--                                                <h2><b>{{ product.name }}</b>-->
+<!--                                                    1 × ₨2,000.00</h2>-->
+<!--                                                <img src="{{product.image.url}} ">-->
+<!--                                                <p>SUBTOTAL: <b>₨2,000.00</b></p>-->
+<!--                                                <h6><a href="{% url 'cart:proceedcheckout' %}">CHECKOUT</a></h6>-->
+                                                {% if user.is_authenticated %}
+                                                <h6><a href="{% url 'cart:proceedcheckout' %}">CHECKOUT</a></h6>
+
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+    </div>
+</div>
+
+
+<!--                <div class="rs00">-->
+
+<!--                    &lt;!&ndash; Button trigger modal &ndash;&gt;-->
+
+<!--                    <button type="buttonTOP KURTA SALWAR PIECE
+" class="btn btn-primary" data-toggle="modal"-->
+<!--                            data-target="#exampleModalScrollable">-->
+<!--                        <h2><a href="#">-->
+<!--                            <g></g>-->
+<!--                            Rs0.00</a></h2>-->
+<!--                    </button>-->
+<!--                    &lt;!&ndash; Modal &ndash;&gt;-->
+<!--                    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"-->
+<!--                         aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">-->
+<!--                        <div class="modal-dialog modal-dialog-scrollable" role="document">-->
+<!--                            <div class="modal-content">-->
+<!--                                <div class="modal-header">-->
+
+<!--                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+
+<!--                                        <h5>CLOSE</h5>-->
+<!--                                        <span aria-hidden="true">&times;</span>-->
+<!--                                    </button>-->
+<!--                                </div>-->
+<!--                                <div class="modal-body">-->
+<!--                                    <h1><b>SHOPPING CART</b></h1>-->
+
+<!--                                    <img src="{% static 'images/rs00close.jpg' %}">-->
+<!--                                    <h2>NO PRODUCTS IN THE CART.</h2>-->
+<!--                                    <h3><a href="{% url 'acereadymade_app:shop' %}"> RETURN TO SHOP</a></h3>-->
+
+
+<!--                                </div>-->
+
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Logo End -->
+
+
+<!-- home shop start -->
+
+
+<div class="home-shop">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="alert alert-primary" role="alert">
+                    <g></g>
+                    BROWSE CATEGORIES<b></b>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <h1><a href="{% url 'acereadymade_app:index' %}">
+                    <g>HOME</g>
+                </a></h1>
+                <h1><a href="{% url 'acereadymade_app:product_list' %}">SHOP</a></h1>
+            </div>
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-4">
+                <h2>Call Us for Wholesale Inquiries: +977-9869861393</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- home shop end -->
+
+
+<!-- slider_start -->
+
+
+<!--<div class="slider">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-3">-->
+<!--                <div class="list-group">-->
+<!--                    {% for category in categories %}-->
+
+<!--                    <a href="{% url 'acereadymade_app:product_list_by_category' category.id category.slug %}" class="list-group-item list-group-item-action">{{category.name}}</a>-->
+
+<!--                    {% endfor %}-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<!--<div class="slider_first">-->
+<!--    <div class="container">-->
+<!--        <div class="row align-items-center justify-content-center">-->
+<!--            <div class="col-md-3">-->
+<!--            </div>-->
+
+<!--            <div class="col-md-5 text-center" data-aos="fade">-->
+
+<!--                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">-->
+<!--                    <div class="carousel-inner">-->
+<!--                        <div class="carousel-item active">-->
+<!--                            <h1>Best Deal On<br>Woolen Kurtis</h1>-->
+<!--                            <h2>Exclutive Offer on Woolen Kurtis</h2>-->
+<!--                        </div>-->
+<!--                        <div class="carousel-item">-->
+<!--                            <h1>Best Deal On<br>Desinger Tops</h1>-->
+<!--                            <h2>Exclutive Offer on Desinger Tops</h2>-->
+<!--                        </div>-->
+
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <h3><b><a href="{% url 'acereadymade_app:product_list' %}">Shop Now</a></b></h3>-->
+<!--            </div>-->
+
+
+<!--            <div class="col-md-4">-->
+
+<!--                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">-->
+<!--                    <div class="carousel-inner">-->
+<!--                        <div class="carousel-item active">-->
+<!--                            <img src="{% static 'images/kurti-1.png' %}" class="d-block w-50" alt="...">-->
+<!--                        </div>-->
+<!--                        <div class="carousel-item">-->
+<!--                            <img src="{% static 'images/kurti2.png' %}" class="d-block w-50" alt="...">-->
+<!--                        </div>-->
+
+<!--                    </div>-->
+<!--                </div>-->
+
+
+<!--            </div>-->
+
+
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<div class="slider_first">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-3">
+                 <div class="list-group">
+            {% for category in categories %}
+
+                    <a href="{% url 'acereadymade_app:product_list_by_category' category.id category.slug %}" class="list-group-item list-group-item-action">{{category.name}}</a>
+
+                    {% endfor %}
+
+
+
+
+
+          </div>
+        </div>
+
+        <div class="col-md-5 text-center" data-aos="fade">
+
+                      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+              <div class="carousel-item active">
+                 <h1>Best Deal On<br>Woolen Kurtis</h1>
+                      <h2>Exclutive Offer on Woolen Kurtis</h2>
+              </div>
+              <div class="carousel-item">
+                <h1>Best Deal On<br>Desinger Tops</h1>
+                      <h2>Exclutive Offer on Desinger Tops</h2>
+              </div>
+
+              </div>
+            </div>
+              <h3><b><a href="shop.php">Shop Now</a></b></h3>
+              </div>
+
+              <div class="col-md-4">
+                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+              <div class="carousel-item active">
+                  <img src="{% static 'images/kurti-1.png' %}" class="d-block w-50" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="{% static 'images/kurti2.png' %}" class="d-block w-50" alt="...">
+              </div>
+            </div>
+          </div>
+        </div>
+
+              </div>
+            </div>
+
+              </div>
+
+<!-- collectoins_Start -->
+
+<div class="collectoins">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>ACE READYMADE COLLECTIONS</h1>
+                <h2>FEATURED CATEGORIES</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- collectoins_end -->
+
+
+<!-- collectoins_imgs _start -->
+
+
+<div class="collectoins_img">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="gown">
+                    <a href="faqs.php"><img src="{% static 'images/img_01.jpg' %}" class="img-fluid"
+                                            alt="Responsive image"></a>
+                    <h1><b>GOWN</b></h1>
+                    <h2>12 produs</h2>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="kurti">
+                    <a href="faqs.php"><img src="{% static 'images/kurti.jpg' %}"></a>
+                    <h1><b>KURTA SALWAR</b></h1>
+                    <h2>40 products</h2>
+                </div>
+                <div class="kurti_1">
+                    <a href="faqs.php"><img src="{% static 'images/onepess.jpg' %}"></a>
+                    <h1><b>ONE PICE</b></h1>
+                    <h2>9 products</h2>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="kurti">
+                    <a href="faqs.php"><img src="{% static 'images/sareeacer.jpg' %}"></a>
+                    <h1><b>Saree</b></h1>
+                    <h2>33 products</h2>
+                </div>
+                <div class="kurti_1">
+                    <a href="faqs.php"><img src="{% static 'images/kurtitwo.jpg' %}"></a>
+                    <h1><b>Kurti</b></h1>
+                    <h2>39 products</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- collectoins_imgs _end -->
+
+
+<!-- collectoins_Start -->
+
+<div class="collectoins_1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Shop by Featured Products</h1>
+                <h2>FEATURED PRODUCTS</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- collectoins_end -->
+
+
+<!-- sale start -->
+
+<div class="sale">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+                <li><a href="#">BEST SELLERS</a></li>
+                <li><a href="#">FEATURED</a></li>
+                <li><a href="#">SALE</a></li>
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- sale end -->
+
+
+<!-- our_latest_product_start -->
+
+<!--<div class="col-md-4">-->
+<!--    <li><a href="#">BEST SELLERS</a></li>-->
+<!--    <li><a href="#">FEATURED</a></li>-->
+<!--    <li><a href="#">SALE</a></li>-->
+<!--</div>-->
+
+
+<section class="our_latest_product">
+    <div class="container">
+        <div class="s_m_title">
+        </div>
+        <div class="l_product_slider owl-carousel">
+            {% for product in featured_products %}
+            <div class="item">
+
+                <div class="l_product_item">
+                    <div class="l_p_img">
+                        <a href="{% url 'acereadymade_app:product_detail' product.slug product.id %}">
+                        <img src="{{product.image.url}} " alt="">
+                        </a>
+
+                        <h1>-30</h1>
+                    </div>
+                    <div class="l_p_text">
+                        <ul>
+                            <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
+                            <li><a class="add_cart_btn" href="{% url 'cart:add_cart' product.id %}">Add To Cart</a></li>
+                            <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
+                        </ul>
+                        <h4>{{ product.name }}<br>With Attached Blowse</h4>
+                        <h5>
+                            <del>₨ 3,400.00</del>
+                            ₨ {{ product.price }}
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+</div>
+
+
+<!-- our_latest_product_end -->
+
+
+<!-- Product section -->
+
+
+<section class="product-section spad">
+    <div class="products">
+        <div class="container">
+            <h1>LATEST PRODUCTS</h1>
+            <div class="row" id="product-filter">
+               {% for product in latest_products %}
+
+          <div class="col-md-6 col-lg-3 ftco-animate">
+            <div class="product">
+              <a href="{% url 'acereadymade_app:product_detail' product.slug product.id %}" class="img-prod"><img class="img-fluid" src="{{product.image.url}} " alt="Colorlib Template">
+                <span class="status">-30</span>
+                <div class="overlay"></div>
+              </a>
+              <div class="text py-3 pb-4 px-3 text-center">
+                <h3><a href="alladdtocart_2.php">{{ product.name }}</a></h3>
+                <div class="d-flex">
+                  <div class="pricing">
+                    <p class="price"><span class="mr-2 price-dc">₨ {{ product.price }}</span><span class="price-sale">₨ 2,400.00</span></p>
+                  </div>
+                </div>
+                <div class="bottom-area d-flex px-3">
+                  <div class="m-auto d-flex">
+                    <a href="viewfinis.php" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                     <div class="iconeye">
+                      <h1></h1>
+                    </div>
+                    </a>
+                    <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                      <div class="iconeye">
+                      <h1></h1>
+                    </div>
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.xstudioo.acereadymade" class="heart d-flex justify-content-center align-items-center ">
+                      <div class="iconeye">
+                      <h1></h1>
+                    </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+<!--<section class="ftco-section">-->
+<!--      <div class="container">-->
+<!--        <div class="row justify-content-center mb-3 pb-3">-->
+<!--          <div class="col-md-12 heading-section text-center ftco-animate">-->
+
+<!--&lt;!&ndash;            <h2 class="mb-4">LATEST PRODUCTS</h2>&ndash;&gt;-->
+
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="container">-->
+<!--        <div class="row">-->
+<!--            {% for product in latest_products %}-->
+
+<!--          <div class="col-md-6 col-lg-3 ftco-animate">-->
+<!--            <div class="product">-->
+<!--              <a href="{% url 'acereadymade_app:product_detail' product.slug product.id %}" class="img-prod"><img class="img-fluid" src="{{product.image.url}} " alt="Colorlib Template">-->
+<!--                <span class="status">-30</span>-->
+<!--                <div class="overlay"></div>-->
+<!--              </a>-->
+<!--              <div class="text py-3 pb-4 px-3 text-center">-->
+<!--                <h3><a href="alladdtocart_2.php">{{ product.name }}</a></h3>-->
+<!--                <div class="d-flex">-->
+<!--                  <div class="pricing">-->
+<!--                    <p class="price"><span class="mr-2 price-dc">₨ {{ product.price }}</span><span class="price-sale">₨ 2,400.00</span></p>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="bottom-area d-flex px-3">-->
+<!--                  <div class="m-auto d-flex">-->
+<!--                    <a href="viewfinis.php" class="add-to-cart d-flex justify-content-center align-items-center text-center">-->
+<!--                     <div class="iconeye">-->
+<!--                      <h1></h1>-->
+<!--                    </div>-->
+<!--                    </a>-->
+<!--                    <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">-->
+<!--                      <div class="iconeye">-->
+<!--                      <h1></h1>-->
+<!--                    </div>-->
+<!--                    </a>-->
+<!--                    <a href="https://play.google.com/store/apps/details?id=com.xstudioo.acereadymade" class="heart d-flex justify-content-center align-items-center ">-->
+<!--                      <div class="iconeye">-->
+<!--                      <h1></h1>-->
+<!--                    </div>-->
+<!--                    </a>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--            {% endfor %}-->
+<!--        </div>-->
+<!--      </div>-->
+<!--</section>-->
+<!--          <div class="col-md-6 col-lg-3 ftco-animate">-->
+<!--            <div class="product">-->
+<!--              <a href="alladdtocart_2.php" class="img-prod"><img class="img-fluid" src="images/one1.jpg" alt="Colorlib Template">-->
+<!--                <span class="status">-35</span>-->
+<!--                <div class="overlay"></div>-->
+<!--              </a>-->
+<!--              <div class="text py-3 pb-4 px-3 text-center">-->
+<!--                <h3><a href="alladdtocart_2.php">Gray/Blue Floral Printed Silk Saree-->
+<!--              With Attached Blowse</a></h3>-->
+<!--                <div class="d-flex">-->
+<!--                  <div class="pricing">-->
+<!--                    <p class="price"><span class="mr-2 price-dc">₨ 3,500.00</span><span class="price-sale">₨ 2,800.00</span></p>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="bottom-area d-flex px-3">-->
+<!--                  <div class="m-auto d-flex">-->
+<!--                    <a href="viewfinis.php" class="add-to-cart d-flex justify-content-center align-items-center text-center">-->
+<!--                     <div class="iconeye">-->
+<!--                      <h1></h1>-->
+<!--                    </div>-->
+<!--                    </a>-->
+<!--                    <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">-->
+<!--                      <div class="iconeye">-->
+<!--                      <h1></h1>-->
+<!--                    </div>-->
+<!--                    </a>-->
+<!--                    <a href="https://play.google.com/store/apps/details?id=com.xstudioo.acereadymade" class="heart d-flex justify-content-center align-items-center ">-->
+<!--                      <div class="iconeye">-->
+<!--                      <h1></h1>-->
+<!--                    </div>-->
+<!--                    </a>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-md-6 col-lg-3 ftco-animate">-->
+<!--            <div class="product">-->
+<!--              <a href="alladdtocart_2.php" class="img-prod"><img class="img-fluid" src="images/one2.jpg" alt="Colorlib Template">-->
+<!--                <span class="status">-20</span>-->
+<!--                <div class="overlay"></div>-->
+<!--              </a>-->
+<!--              <div class="text py-3 pb-4 px-3 text-center">-->
+<!--                <h3><a href="alladdtocart_2.php">Blue/Yellow Floral Printed Silk Saree-->
+<!--              With Attached Blowse</a></h3>-->
+<!--                <div class="d-flex">-->
+<!--                  <div class="pricing">-->
+<!--                    <p class="price"><span class="mr-2 price-dc">₨ 3,000.00</span><span class="price-sale">₨ 2,600.00</span></p>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="bottom-area d-flex px-3">-->
+<!--                  <div class="m-auto d-flex">-->
+<!--                    <a href="viewfinis.php" class="add-to-cart d-flex justify-content-center align-items-center text-center">-->
+<!--                     <div class="iconeye">-->
+<!--                      <h1></h1>-->
+<!--                    </div>-->
+<!--                    </a>-->
+<!--                    <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">-->
+<!--                      <div class="iconeye">-->
+<!--                      <h1></h1>-->
+<!--                    </div>-->
+<!--                    </a>-->
+<!--                    <a href="https://play.google.com/store/apps/details?id=com.xstudioo.acereadymade" class="heart d-flex justify-content-center align-items-center ">-->
+<!--                      <div class="iconeye">-->
+<!--                      <h1></h1>-->
+<!--                    </div>-->
+<!--                    </a>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-md-6 col-lg-3 ftco-animate">-->
+<!--            <div class="product">-->
+<!--              <a href="alladdtocart_2.php" class="img-prod"><img class="img-fluid" src="images/one3.jpg" alt="Colorlib Template">-->
+<!--                <span class="status">-25</span>-->
+<!--                <div class="overlay"></div>-->
+<!--              </a>-->
+<!--              <div class="text py-3 pb-4 px-3 text-center">-->
+<!--                <h3><a href="alladdtocart_2.php">Green/Yellow Floral Printed Silk Saree-->
+<!--              With Attached Blowse</a></h3>-->
+<!--                <div class="d-flex">-->
+<!--                  <div class="pricing">-->
+<!--                    <p class="price"><span class="mr-2 price-dc">₨ 3,300.00</span><span class="price-sale">₨ 2,600.00</span></p>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="bottom-area d-flex px-3">-->
+<!--                  <div class="m-auto d-flex">-->
+<!--                    <a href="viewfinis.php" class="add-to-cart d-flex justify-content-center align-items-center text-center">-->
+<!--                     <div class="iconeye">-->
+<!--                      <h1></h1>-->
+<!--                    </div>-->
+<!--                    </a>-->
+<!--                    <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">-->
+<!--                      <div class="iconeye">-->
+<!--                      <h1></h1>-->
+<!--                    </div>-->
+<!--                    </a>-->
+<!--                    <a href="https://play.google.com/store/apps/details?id=com.xstudioo.acereadymade" class="heart d-flex justify-content-center align-items-center ">-->
+<!--                      <div class="iconeye">-->
+<!--                      <h1></h1>-->
+<!--                    </div>-->
+<!--                    </a>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+
+
+<!--          <div class="col-md-6 col-lg-3 ftco-animate">-->
+<!--            <div class="product">-->
+<!--              <a href="alladdtocart_2.php" class="img-prod"><img class="img-fluid" src="images/one4.jpg" alt="Colorlib Template">-->
+<!--                <span class="status">-30</span>-->
+<!--                <span class="status">30%</span>-->
+<!--                <div class="overlay"></div>-->
+<!--              </a>-->
+<!--              <div class="text py-3 pb-4 px-3 text-center">-->
+<!--                <h3><a href="alladdtocart_2.php">Blue/Yellow Floral Printed Silk Saree-->
+<!--              With Attached Blowse</a></h3>-->
+<!--                <div class="d-flex">-->
+<!--                  <div class="pricing">-->
+<!--                    <p class="price"><span class="mr-2 price-dc">₨ 3,200.00</span><span class="price-sale">₨ 3,000.00</span></p>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="bottom-area d-flex px-3">-->
+<!--                  <div class="m-auto d-flex">-->
+<!--                    <a href="viewfinis.php" class="add-to-cart d-flex justify-content-center align-items-center text-center">-->
+<!--                     <div class="iconeye">-->
+<!--                      <h1></h1>-->
+<!--                    </div>-->
+<!--                    </a>-->
+<!--                    <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">-->
+<!--                      <div class="iconeye">-->
+<!--                      <h1></h1>-->
+<!--                    </div>-->
+<!--                    </a>-->
+<!--                    <a href="https://play.google.com/store/apps/details?id=com.xstudioo.acereadymade" class="heart d-flex justify-content-center align-items-center ">-->
+<!--                      <div class="iconeye">-->
+<!--                      <h1></h1>-->
+<!--                    </div>-->
+<!--                    </a>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-md-6 col-lg-3 ftco-animate">-->
+<!--            <div class="product">-->
+<!--              <a href="alladdtocart_2.php" class="img-prod"><img class="img-fluid" src="images/one3.jpg" alt="Colorlib Template">-->
+<!--                <span class="status">-15</span>-->
+<!--                <div class="overlay"></div>-->
+<!--              </a>-->
+<!--              <div class="text py-3 pb-4 px-3 text-center">-->
+<!--                <h3><a href="alladdtocart_2.php">Green/Yellow Floral Printed Silk Saree-->
+<!--              With Attached Blowse</a></h3>-->
+<!--                <div class="d-flex">-->
+<!--                  <div class="pricing">-->
+<!--                    <p class="price"><span class="mr-2 price-dc">₨ 3,100.00</span><span class="price-sale">₨ 2,800.00</span></p>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="bottom-area d-flex px-3">-->
+<!--                 <div class="m-auto d-flex">-->
+<!--                    <a href="viewfinis.php" class="add-to-cart d-flex justify-content-center align-items-center text-center">-->
+<!--                     <div class="iconeye">-->
+<!--                      <h1></h1>-->
+<!--                    </div>-->
+<!--                    </a>-->
+<!--                    <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">-->
+<!--                      <div class="iconeye">-->
+<!--                      <h1></h1>-->
+<!--                    </div>-->
+<!--                    </a>-->
+<!--                    <a href="https://play.google.com/store/apps/details?id=com.xstudioo.acereadymade" class="heart d-flex justify-content-center align-items-center ">-->
+<!--                      <div class="iconeye">-->
+<!--                      <h1></h1>-->
+<!--                    </div>-->
+<!--                    </a>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-md-6 col-lg-3 ftco-animate">-->
+<!--            <div class="product">-->
+<!--              <a href="alladdtocart_2.php" class="img-prod"><img class="img-fluid" src="images/saree3.jpg" alt="Colorlib Template">-->
+<!--                <span class="status">-35</span>-->
+<!--                <div class="overlay"></div>-->
+<!--              </a>-->
+<!--              <div class="text py-3 pb-4 px-3 text-center">-->
+<!--                <h3><a href="alladdtocart_2.php">Pink/Yellow Floral Printed Silk Saree-->
+<!--              With Attached Blowse</a></h3>-->
+<!--                <div class="d-flex">-->
+<!--                  <div class="pricing">-->
+<!--                    <p class="price"><span class="mr-2 price-dc">₨ 3,300.00</span><span class="price-sale">₨ 2,400.00</span></p>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="bottom-area d-flex px-3">-->
+<!--                  <div class="m-auto d-flex">-->
+<!--                    <a href="viewfinis.php" class="add-to-cart d-flex justify-content-center align-items-center text-center">-->
+<!--                     <div class="iconeye">-->
+<!--                      <h1></h1>-->
+<!--                    </div>-->
+<!--                    </a>-->
+<!--                    <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">-->
+<!--                      <div class="iconeye">-->
+<!--                      <h1></h1>-->
+<!--                    </div>-->
+<!--                    </a>-->
+<!--                    <a href="https://play.google.com/store/apps/details?id=com.xstudioo.acereadymade" class="heart d-flex justify-content-center align-items-center ">-->
+<!--                      <div class="iconeye">-->
+<!--                      <h1></h1>-->
+<!--                    </div>-->
+<!--                    </a>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-md-6 col-lg-3 ftco-animate">-->
+<!--            <div class="product">-->
+<!--              <a href="alladdtocart_2.php" class="img-prod"><img class="img-fluid" src="images/saree4.jpg" alt="Colorlib Template">-->
+<!--                <span class="status">-20</span>-->
+<!--                <div class="overlay"></div>-->
+<!--              </a>-->
+<!--              <div class="text py-3 pb-4 px-3 text-center">-->
+<!--                <h3><a href="alladdtocart_2.php">Gray/Yellow Floral Printed Silk Saree-->
+<!--              With Attached Blowse</a></h3>-->
+<!--                <div class="d-flex">-->
+<!--                  <div class="pricing">-->
+<!--                    <p class="price"><span class="mr-2 price-dc">₨ 3,300.00</span><span class="price-sale">₨ 2,400.00</span></p>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="bottom-area d-flex px-3">-->
+<!--                  <div class="m-auto d-flex">-->
+<!--                    <a href="viewfinis.php" class="add-to-cart d-flex justify-content-center align-items-center text-center">-->
+<!--                     <div class="iconeye">-->
+<!--                      <h1></h1>-->
+<!--                    </div>-->
+<!--                    </a>-->
+<!--                    <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">-->
+<!--                      <div class="iconeye">-->
+<!--                      <h1></h1>-->
+<!--                    </div>-->
+<!--                    </a>-->
+<!--                    <a href="https://play.google.com/store/apps/details?id=com.xstudioo.acereadymade" class="heart d-flex justify-content-center align-items-center ">-->
+<!--                      <div class="iconeye">-->
+<!--                      <h1></h1>-->
+<!--                    </div>-->
+<!--                    </a>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!-- Product section end -->
+
+
+<!--  sale start -->
+
+
+<div class="sale_01">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>For Sale</h1>
+                <h2><b>TOP KURTA SALWAR PIECE</b></h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--  sale end -->
+
+
+<section class="product-section spad">
+    <div class="products_2">
+        <div class="container">
+        <div class="row">
+                {% for product in topkurtha_products %}
+
+          <div class="col-md-6 col-lg-3 ftco-animate">
+            <div class="product">
+              <a href="{% url 'acereadymade_app:product_detail' product.slug product.id %}" class="img-prod"><img class="img-fluid" src="{{product.image.url}} " alt="Colorlib Template">
+                <span class="status">-30</span>
+                <div class="overlay"></div>
+              </a>
+              <div class="text py-3 pb-4 px-3 text-center">
+                <h3><a href="alladdtocart_2.php">{{ product.name }}</a></h3>
+                <div class="d-flex">
+                  <div class="pricing">
+                    <p class="price"><span class="mr-2 price-dc">₨ {{ product.price }}</span><span class="price-sale">₨ 2,400.00</span></p>
+                  </div>
+                </div>
+                <div class="bottom-area d-flex px-3">
+                  <div class="m-auto d-flex">
+                    <a href="viewfinis.php" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                     <div class="iconeye">
+                      <h1></h1>
+                    </div>
+                    </a>
+                    <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                      <div class="iconeye">
+                      <h1></h1>
+                    </div>
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.xstudioo.acereadymade" class="heart d-flex justify-content-center align-items-center ">
+                      <div class="iconeye">
+                      <h1></h1>
+                    </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+            {% endfor %}
+        </div>
+      </div>
+
+    </div>
+</section>
+<!-- Product section end -->
+
+
+<!-- Product section -->
+<section class="product-section spad">
+		<div class="products_03">
+		<div class="container">
+			<h6>Discount Up To 16% On Party wear Tops</h6>
+			<h3>BUY FROM OUR FEATURED TOPS COLLECTION</h3>
+			<div class="row" id="product-filter">
+                {% for product in topfeatured_products %}
+				<div class="mix col-lg-3 col-md-6 best">
+                    <figure>
+					<div class="product-item">
+                        <a href="{% url 'acereadymade_app:product_detail' product.slug product.id %}">
+							<img src="{{product.image.url}} " alt="">
+                        </a>
+							<h2>-20</h2>
+							<div class="pi-meta">
+								<div class="pi-m-left">
+									<img src="{{product.image.url}} " alt="">
+
+									<p><a href="{% url 'cart:add_cart' product.id %}">Add To Cart</a></p>
+								</div>
+								<div class="pi-m-right">
+									<img src="images/icons/heart.png" alt="">
+									<p><a href="#">Save</a></p>
+								</div>
+							</div>
+						<div class="product-info">
+
+
+
+							<h4>{{ product.name }}<br>With Attached Blowse</h4>
+                                <h5><del>₨ {{ product.price }}</del>₨ 2,400.00</h5>
+
+
+						</div>
+					</div>
+                    </figure>
+				</div>
+                {% endfor %}
+            </div>
+        </div>
+        </div>
+</section>
+
+
+
+
+<!-- Product section end -->
+
+<!-- Product email start-->
+
+<div class="email">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>JOIN OUR NEWSLETTER NOW</h1>
+            </div>
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-3">
+                <form>
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Your Email Address">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-2">
+                <h2><a href="#">SIGN UP</a></h2>
+            </div>
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-12">
+                <h3>Will be used in accordance with our <b><a href="#">Privacy Policy</a></b></h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Product email end-->
+
+
+<!-- Product futtr Start-->
+
+
+<div class="futtr">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h1>CONNECT WITH US</h1>
+                <h2>
+                    <g>Kupondole, Lalitpur Nepal</g>
+                </h2>
+                <h2>
+                    <g>info@acereadymade.com</g>
+                </h2>
+                <h2>
+                    <g>sales@acereadymade.com</g>
+                </h2>
+                <h2>
+                    <g>wholesale@acereadymade.com</g>
+                </h2>
+            </div>
+            <div class="col-md-3">
+                <h1>NEWSLETTER</h1>
+                <form>
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Your Email Address">
+                        </div>
+                    </div>
+                </form>
+                <h3><a href="#">SIGN UP</a></h3>
+            </div>
+            <div class="col-md-3">
+                <h1>SHOP</h1>
+                <h4><a href="cart.php"> Cart</a></h4>
+                <h4><a href="cart.php">Checkout</a></h4>
+                <h4><a href="faqs.php">Products Categories</a></h4>
+                <h4><a href="wishlist.php">Wishlist</a></h4>
+                <h4><a href="shop.php">Shop</a></h4>
+            </div>
+            <div class="col-md-3">
+                <h1>USEFUL LINKS</h1>
+                <h4><a href="index.html"><b>Home</b></a></h4>
+                <h4><a href="faqs.php">Terms & Conditions</a></h4>
+                <h4><a href="faqs.php">Return Policy</a></h4>
+                <h4><a href="faqs.php">Privacy Policy</a></h4>
+                <h4><a href="contact.php">Contact Us</a></h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Product futtr end-->
+
+
+<!-- Product futtr_0 Start-->
+
+<div class="futtr_0">
+    <div class="container">
+        <div class="col-md-12">
+            <h1>© 2019 Ace Readymade. All Rights Reserved.</h1>
+        </div>
+    </div>
+</div>
+
+
+<!-- Product futtr_0 end-->
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!--  <script src="{ % static 'js/jquery.min.js' %}"></script>-->
+<!--  <script src="{ % static 'js/jquery-migrate-3.0.1.min.js' %}"></script>-->
+<!--  <script src="{ % static 'js/popper.min.js' %}"></script>-->
+<!--  <script src="{ % static 'js/bootstrap.min.js' %}"></script>-->
+<!--  <script src="{ % static 'js/jquery.easing.1.3.js' %}"></script>-->
+<!--  <script src="{ % static 'js/jquery.waypoints.min.js' %}"></script>-->
+<!--  <script src="{ % static 'js/jquery.stellar.min.js' %}"></script>-->
+<!--  <script src="{ % static 'js/owl.carousel.min.js' %}"></script>-->
+<!--  <script src="{ % static 'js/jquery.magnific-popup.min.js' %}"></script>-->
+<!--  <script src="{ % static 'js/aos.js' %}"></script>-->
+<!--  <script src="{ % static 'js/jquery.animateNumber.min.js' %}"></script>-->
+<!--  <script src="{ % static 'js/bootstrap-datepicker.js' %}"></script>-->
+<!--  <script src="{ % static 'js/scrollax.min.js' %}"></script>-->
+<!--  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>-->
+<!--  <script src="{ % static 'js/google-map.js' %}"></script>-->
+<!--  <script src="{ % static 'js/main.js' %}"></script>-->
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'vendors/owl-carousel/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/theme.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,297 @@
+{% extends 'acereadymade/base.html' %}
+{% load static %}
+<!doctype html>
+<html lang="en">
+{% block css %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100i,200,400&display=swap" rel="stylesheet">
+
+
+    <link href="{% static 'vendors/line-icon/css/simple-line-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'vendors/elegant-icon/style.css' %}" rel="stylesheet">
+
+    <link href="{% static 'vendors/bootstrap-selector/css/bootstrap-select.min.css' %}" rel="stylesheet">
+
+
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+    <link href="{% static 'vendors/owl-carousel/owl.carousel.min.css' %}" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100i,200,400&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+    <title>Product-Ace Radymade</title>
+</head>
+{% endblock %}
+<body>
+
+
+{% block content %}
+
+<div class="storeshop">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1">
+                <h1>Sort By:</h1>
+            </div>
+
+
+            <div class="col-md-2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Sort by latest
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="faqs.php">Default Sorting</a>
+                        <a class="dropdown-item" href="faqs.php">Sort by Popularty</a>
+                        <a class="dropdown-item" href="faqs.php">Sort by Latest</a>
+                        <a class="dropdown-item" href="faqs.php">Sort by average rating</a>
+                        <a class="dropdown-item" href="faqs.php">Sort by price: low to high</a>
+                        <a class="dropdown-item" href="faqs.php">Sort by price: high to low</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-7">
+            </div>
+
+
+            <div class="col-md-1">
+                <h1>Show:</h1>
+            </div>
+
+
+            <div class="col-md-1">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">12
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="faqs.php">12</a>
+                        <a class="dropdown-item" href="faqs.php">24</a>
+                        <a class="dropdown-item" href="faqs.php">36</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br></br>
+<!--&lt;!&ndash; our_latest_product_start &ndash;&gt;-->
+
+<!--<section class="our_latest_product">-->
+<!--    <div class="container">-->
+<!--        <div class="s_m_title">-->
+<!--        </div>-->
+
+<!--        <div class="l_product_slider owl-carousel">-->
+<!--        {% for product in products %}-->
+
+<!--            <div class="item">-->
+
+<!--                <div class="l_product_item">-->
+
+<!--                    <div class="l_p_img">-->
+<!--                        <a href="shop_cart.php"><img src="{{product.image.url}} " alt=""></a>-->
+
+<!--                    </div>-->
+<!--                    <div class="l_p_text">-->
+<!--                        <ul>-->
+<!--                            <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>-->
+<!--                            <li><a class="add_cart_btn" href="alladdtocart_1.php">Add To Cart</a></li>-->
+<!--                            <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>-->
+<!--                        </ul>-->
+<!--                        <h4>{{ product.name }}<br>FANCY SAREE WITH BLOUSE</h4>-->
+<!--                        <h5>-->
+<!--                            <del>₨ 3,500.00</del>-->
+<!--                            ₨ {{ product.price }}-->
+<!--                        </h5>-->
+
+<!--                    </div>-->
+
+<!--                </div>-->
+<!--            </div>-->
+<!--            {% endfor %}-->
+
+<!--        </div>-->
+
+
+<!--&lt;!&ndash;        <div class="l_product_slider owl-carousel">&ndash;&gt;-->
+<!--&lt;!&ndash;        {% for product in topfeatured_products %}&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <div class="item">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                <div class="l_product_item">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    <div class="l_p_img">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <a href="shop_cart.php"><img src="{{product.image.url}} " alt=""></a>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="l_p_text">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <ul>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <li><a class="add_cart_btn" href="alladdtocart_1.php">Add To Cart</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <h4>{{ product.name }}<br>FANCY SAREE WITH BLOUSE</h4>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <h5>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <del>₨ 3,500.00</del>&ndash;&gt;-->
+<!--&lt;!&ndash;                            ₨ {{ product.price }}&ndash;&gt;-->
+<!--&lt;!&ndash;                        </h5>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            {% endfor %}&ndash;&gt;-->
+
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--    </div>-->
+<!--</section>-->
+<!--</div>-->
+
+<!--<section class="featured-section">-->
+<div class="dabulimg01">
+    <div class="container">
+        <div class="row">
+
+            {% for product in products %}
+
+            <div class="col-md-3 images-block">
+       				<a href="{% url 'acereadymade_app:product_detail' product.slug product.id %}"> <img class="ARimg-A1 img-fluid" src="{{product.image.url}} "></a>
+<!--       				<a href="{% url 'acereadymade_app:product_detail' product.slug product.id %}"> <img class="ARimg-A2 img-fluid" src="{{product.image.url}} "></a>-->
+       				<h1>    </h1>
+       				<h2>{{ product.name }}</h2>
+       				<h3><s>₨ {{ product.price }}</s> ₨5,000.00</h3>
+
+
+       				<h4><a href="#"><g></g></a><a href="{% url 'cart:add_cart' product.id %}"><p>ADD TO CART</p></a><a href="#"><g></g></a></h4>
+				</div>
+
+<!--            <div class="col-md-6 col-lg-3 ftco-animate">-->
+<!--            <div class="product">-->
+<!--              <a href="{% url 'acereadymade_app:product_detail' product.slug product.id %}" class="img-prod"><img class="img-fluid" src="{{product.image.url}} " alt="Colorlib Template">-->
+<!--                <span class="status">-30</span>-->
+<!--                <div class="overlay"></div>-->
+<!--              </a>-->
+<!--              <div class="text py-3 pb-4 px-3 text-center">-->
+<!--                <h3><a href="alladdtocart_2.php">{{ product.name }}</a></h3>-->
+<!--                <div class="d-flex">-->
+<!--                  <div class="pricing">-->
+<!--                    <p class="price"><span class="mr-2 price-dc">₨ {{ product.price }}</span><span class="price-sale">₨ 2,400.00</span></p>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="bottom-area d-flex px-3">-->
+<!--                  <div class="m-auto d-flex">-->
+<!--                    <a href="viewfinis.php" class="add-to-cart d-flex justify-content-center align-items-center text-center">-->
+<!--                     <div class="iconeye">-->
+<!--                      <h1></h1>-->
+<!--                    </div>-->
+<!--                    </a>-->
+<!--                    <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">-->
+<!--                      <div class="iconeye">-->
+<!--                      <h1></h1>-->
+<!--                    </div>-->
+<!--                    </a>-->
+<!--                    <a href="https://play.google.com/store/apps/details?id=com.xstudioo.acereadymade" class="heart d-flex justify-content-center align-items-center ">-->
+<!--                      <div class="iconeye">-->
+<!--                      <h1></h1>-->
+<!--                    </div>-->
+<!--                    </a>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+            {% endfor %}
+
+
+        </div>
+    </div>
+</div>
+<!--</section>-->
+
+
+<div class="storeshop">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1">
+                <h1>Show:</h1>
+            </div>
+
+
+            <div class="col-md-1">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">12
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="faqs.php">12</a>
+                        <a class="dropdown-item" href="faqs.php">24</a>
+                        <a class="dropdown-item" href="faqs.php">36</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-8">
+            </div>
+
+
+            <div class="col-md-2">
+                <br>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+{% block script %}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'vendors/owl-carousel/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/theme.js' %}"></script>
+{% endblock %}
+</body>
+</html>        

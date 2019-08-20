@@ -1,0 +1,295 @@
+{% extends 'acereadymade/base.html' %}
+{% load static %}
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+
+    <link href="vendors/line-icon/css/simple-line-icons.css" rel="stylesheet">
+    <link href="vendors/elegant-icon/style.css" rel="stylesheet">
+
+    <link href="vendors/bootstrap-selector/css/bootstrap-select.min.css" rel="stylesheet">
+
+
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <link href="vendors/owl-carousel/owl.carousel.min.css" rel="stylesheet">
+
+
+    <title>Cart-Ace Radymade</title>
+
+    {% block content %}
+    <div class="contacthome">
+        <div class="home_icon">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h1><a href="index.php"></a>
+                            <g><a href="shop.php">Shop</a></g>
+                            /Cart
+                        </h1>
+                        <g></g>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="viewcart_shopping">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <h1>Shopping Cart</h1>
+                </div>
+
+                <div class="col-md-8">
+                </div>
+
+                <div class="col-md-2">
+                    <h2><a href="{% url 'cart:proceedcheckout' %}"> Proced to checkout</a></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="cart_ProductName">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                <div class="col-md-8">
+                    <div class="cart_ProductName-1">
+
+                        <div class="row">
+                            <div class="col-md-3">
+                            </div>
+                            <div class="col-md-4">
+                                <h1>Product Name</h1>
+                            </div>
+
+
+                            <div class="col-md-2">
+                                <h1>Unit Price</h1>
+                            </div>
+
+
+                            <div class="col-md-1">
+                                <h1>Qty</h1>
+                            </div>
+
+
+                            <div class="col-md-1">
+                                <h1>Subtotal</h1>
+                            </div>
+
+                            {% for cart_item in cart_items %}
+
+                            <div class="col-md-1">
+                            </div>
+
+
+                            <div class="col-md-1">
+                            </div>
+
+
+                            <div class="col-md-2">
+                                <img src="{{ cart_item.product.image.url }}">
+                            </div>
+
+                            <div class="col-md-4">
+                                <h3><a href="shop_cart.php">{{ cart_item.product.name }}<br> SAREE WITH BLOUSE</a></h3>
+
+                                Qty: {{ cart_item.quantity }} x Rs{{ cart_item.product.price }}
+                            </div>
+
+                            <div class="col-md-1">
+                                <h4>₨{{ cart_item.product.price }}</h4>
+                            </div>
+
+
+                            <div class="col-md-2">
+                                <form>
+                                    {% if cart_item.quantity < cart_item.product.stock %}
+                                    <a href="{% url 'cart:cart_remove' cart_item.product.id %}">
+                                    <div class="value-button" id="decrease" onclick="decreaseValue()"
+                                         value="Decrease Value">-
+                                    </div>
+                                    </a>
+                                    <input type="number" id="number" value="{{ cart_item.quantity }}"/>
+                                    <a href="{% url 'cart:add_cart' cart_item.product.id %}">
+                                    <div class="value-button" id="increase" onclick="increaseValue()"
+                                         value="Increase Value">+
+                                    </div>
+                                    </a>
+                                    {% else %}
+                                    <a href="{% url 'cart:cart_remove' cart_item.product.id %}">
+                                    <div class="value-button" id="decrease1" onclick="decreaseValue()"
+                                         value="Decrease Value">-
+                                    </div>
+                                    </a>
+                                    {% endif %}
+                                </form>
+                            </div>
+
+                            <div class="col-md-1">
+                                <h4><b>₨{{ cart_item.sub_total }}</b></h4>
+                            </div>
+
+                            {% endfor %}
+
+                            <div class="col-md-12">
+                                <div class="dropcart">
+
+                                    <h1>
+                                        <class
+                                        ="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="COURSES" id="navbarDropdown"
+                                           role="button" data-toggle="dropdown" aria-haspopup="true"
+                                           aria-expanded="false">
+                                            DISCOUNT CODE</a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <class
+                                            ="dropdown-item"><h2>Enter your coupon code if you have one:</h2>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <input type="text" name="text">
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <a href="Aply-Cupon.php"><h3>Aply Cupon</h3></a>
+                                                </div>
+                                                </class="dropdown-item">
+                                            </div>
+                                            </class="nav-item>
+                                    </h1>
+                                    </class="dropdown-item">
+                                </div>
+                                </class="nav-item>
+                                </h1>
+
+
+                                <div class="contineu">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <h1><a href="{% url 'acereadymade_app:index' %}">Contineu Shopping</a></h1>
+                                            </div>
+
+
+                                            <div class="col-md-6">
+                                            </div>
+
+
+                                            <div class="col-md-3">
+                                                <h1><a href="#">Update Cart</a></h1>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                    <div class="col-md-4">
+                        <div class="dropcart">
+                            <div class="dropcart_1">
+                                <h1>
+                                    <class
+                                    ="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="COURSES" id="navbarDropdown1"
+                                       role="button"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        CART TOTALS</a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <div class="row">
+
+                                                                                        <div class="col-md-6">
+
+                                                                                            <h2>Subtotal</h2>
+                                                                                        </div>
+
+                                                                                        <div class="col-md-1">
+                                                                                            <h2>₨{{ cart_item.sub_total }}</h2>
+                                                                                        </div>
+
+
+                                            <div class="col-md-6">
+
+                                                <h2>Grand Total </h2>
+                                            </div>
+
+                                            <div class="col-md-1">
+                                                <h2><b>₨{{ total }}</b></h2>
+                                            </div>
+
+                                            <h2><a href="{% url 'cart:proceedcheckout' %}"> Proced to checkout</a></h2>
+                                        </div>
+                                    </div>
+                                    </class="nav-item>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}
+
+    <!-- Product futtr_0 end-->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    {% block script %}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'vendors/owl-carousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/theme.js' %}"></script>
+    <script type="text/javascript">
+    	function increaseValue() {
+  var value = parseInt(document.getElementById('number').value, 10);
+  value = isNaN(value) ? 0 : value;
+  value++;
+  document.getElementById('number').value = value;
+}
+
+function decreaseValue() {
+  var value = parseInt(document.getElementById('number').value, 10);
+  value = isNaN(value) ? 0 : value;
+  value < 1 ? value = 1 : '';
+  value--;
+  document.getElementById('number').value = value;
+}
+
+    </script>
+    {% endblock %}
+    </body>
+</html>

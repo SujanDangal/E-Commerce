@@ -1,0 +1,63 @@
+{% extends 'acereadymade/base.html' %}
+
+{% block content %}
+<div class="ordersummary">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Order Summary</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="Product_name">
+    <div class="container">
+      {% for orders in orders %}
+        <div class="Product_name1">
+            <div class="row">
+                <div class="col-md-2">
+                </div>
+
+                <div class="col-md-3">
+                    <h1>Product Name</h1>
+                </div>
+                <div class="col-md-3">
+                    <h1>Unit Price</h1>
+                </div>
+                <div class="col-md-3">
+                    <h1>Total Amount</h1>
+                </div>
+
+                <div class="col-md-1">
+                </div>
+
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-10">
+<!--                    <h2>No products were added to the wishlist</h2>-->
+                </div>
+
+                <div class="col-md-2">
+                </div>
+
+                <div class="col-md-3">
+                    <h1>{{ orders.product.name }}</h1>
+                </div>
+                <div class="col-md-3">
+                    <h1>Unit Price</h1>
+                </div>
+                <div class="col-md-3">
+                    <h1>{{ orders.product.price }}</h1>
+                </div>
+
+                <div class="col-md-1">
+                </div>
+            </div>
+        </div>
+      {% endfor %}
+    </div>
+</div>
+{% endblock %}
+

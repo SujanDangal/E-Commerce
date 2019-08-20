@@ -1,0 +1,146 @@
+{% extends 'dashboard/base.html' %}
+{% block content %}
+{% block table %}
+<div class="app-content content container-fluid">
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="content-header-left col-md-6 col-xs-12 mb-1">
+                <h2 class="content-header-title"></h2>
+            </div>
+            <div class="content-header-right breadcrumbs-right breadcrumbs-top col-md-6 col-xs-12">
+                <div class="breadcrumb-wrapper col-xs-12">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a>
+                        </li>
+                        <li class="breadcrumb-item"><a href="#">Tables</a>
+                        </li>
+                        <li class="breadcrumb-item active">Basic Tables
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="content-body"><!-- Basic Tables start -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Order List</h4>
+                            <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+                            <div class="heading-elements">
+                                <ul class="list-inline mb-0">
+<!--                                    <li><a href="{% url 'dashboard:cat_add_modal' %}" data-action="#"><i-->
+<!--                                            class="icon-plus4"></i></a></li>-->
+                                    <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+                                    <li><a data-action="reload"><i class="icon-reload"></i></a></li>
+                                    <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+                                    <li><a data-action="close"><i class="icon-cross2"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body collapse in">
+                            <div class="card-block card-dashboard">
+                                <p class="card-text"></p>
+                                <p><span class="text-bold-600">Order: </span> Make some change.</p>
+                                <div class="table-responsive">
+
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>id</th>
+                                            <th>User</th>
+                                            <th>Product</th>
+                                            <th>F name</th>
+                                            <th>L name</th>
+                                            <th>Company name</th>
+                                            <th>Country</th>
+                                            <th>Street add</th>
+                                            <th>Apartment</th>
+                                            <th>Town</th>
+                                            <th>State</th>
+                                            <th>Postcode</th>
+                                            <th>Phone</th>
+                                            <th>Email</th>
+                                            <th>Information</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for orders in orders %}
+                                        <tr>
+                                            <th scope="row">{{orders.id}}</th>
+                                            <th>{{ orders.user.username }}</th>
+                                            <th>{{ orders.product.name }}</th>
+                                            <th>{{orders.f_name}}</th>
+                                            <th>{{orders.l_name}}</th>
+                                            <th>{{orders.company_name}}</th>
+                                            <th>{{orders.country}}</th>
+                                            <th>{{orders.street_add}}</th>
+                                            <th>{{orders.apartment}}</th>
+                                            <th>{{orders.town}}</th>
+                                            <th>{{orders.state}}</th>
+                                            <th>{{orders.postcode}}</th>
+                                            <th>{{orders.phone}}</th>
+                                            <th>{{orders.email}}</th>
+                                            <th>{{orders.information}}</th>
+                                            <td>
+                                                <div class="col-lg-4 col-md-6 col-sm-12">
+                                                    <div class="form-group">
+
+                                                        <!-- Button trigger modal -->
+                                                        <button type="button"
+                                                                class="btn btn-outline-primary block btn-lg"
+                                                                data-toggle="modal" data-target="#default">
+                                                            <div class="fonticon-wrap">
+                                                                <i class="icon-delete"></i>
+                                                            </div>
+                                                        </button>
+                                                        <!-- Modal -->
+                                                        <div class="modal fade text-xs-left" id="default" tabindex="-1"
+                                                             role="dialog" aria-labelledby="myModalLabel1"
+                                                             aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close"
+                                                                                data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                        <h4 class="modal-title" id="myModalLabel1"></h4>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <h5>Are you sure?
+                                                                        </h5>
+                                                                        <p>Are you sure you want to delete the selected
+                                                                            category? All of the following objects and
+                                                                            their related items will be deleted:
+
+                                                                        </p>
+
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button"
+                                                                                class="btn grey btn-outline-secondary"
+                                                                                data-dismiss="modal">No take me back
+                                                                        </button>
+                                                                        <button type="button"
+                                                                                class="btn btn-outline-primary">Yes, I'm
+                                                                            sure changes
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                            {% endblock %}
+                            {% endblock %}
+                            </html>

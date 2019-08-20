@@ -1,0 +1,313 @@
+{% extends 'acereadymade/base.html' %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100i,200,400&display=swap" rel="stylesheet">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+
+    <link href="vendors/line-icon/css/simple-line-icons.css" rel="stylesheet">
+    <link href="vendors/elegant-icon/style.css" rel="stylesheet">
+
+    <link href="vendors/bootstrap-selector/css/bootstrap-select.min.css" rel="stylesheet">
+
+
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <link href="vendors/owl-carousel/owl.carousel.min.css" rel="stylesheet">
+
+
+    <title>Checkout-Ace Radymade</title>
+</head>
+<body>
+
+{% block content %}
+
+<div class="contacthome">
+    <div class="home_icon">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h1><a href="index.php"></a>
+                        <g><a href="shop.php">Shop</a></g>
+                        /Checkout
+                    </h1>
+                    <g></g>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-md-12">
+    <div class="dropcart">
+        <div class="container">
+
+            <h1>
+                <class
+                ="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="COURSES" id="navbarDropdown" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    DISCOUNT CODE</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <class
+                    ="dropdown-item"><h2>Enter your coupon code if you have one:</h2>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <input type="text" name="text">
+                        </div>
+
+                        <div class="col-md-3">
+                            <a href="Aply-Cupon.php"><h3>Aply Cupon</h3></a>
+                        </div>
+                        </class="dropdown-item">
+                    </div>
+                    </class="nav-item>
+            </h1>
+            </class="dropdown-item">
+        </div>
+        </class="nav-item>
+        </h1>
+    </div>
+</div>
+</div>
+
+
+<div class="Billing_details">
+
+
+    <div class="container">
+        <div class="row">
+             <form id="billing_form" action="" accept-charset="utf-8" method="post">{% csrf_token %}
+            <div class="col-md-4">
+
+                <h1>Billing details</h1>
+                <div class="col-md-6">
+
+                    <h2>First name *</h2>
+<!--                    <input type="tetxt" name="text">-->
+                    {{ form.f_name }}
+                </div>
+
+                <div class="col-md-6">
+
+                    <h2>Last name *</h2>
+<!--                    <input type="tetxt" name="text">-->
+                    {{ form.l_name }}
+                </div>
+
+
+                <div class="col-md-12">
+                    <div class="inputbox">
+                        <h2>Company name (optional)</h2>
+<!--                        <input type="tetxt" name="text">-->
+                        {{ form.company_name }}
+                    </div>
+                </div>
+
+
+                <div class="col-md-12">
+                    <div class="inputbox">
+                        <h2>Country *</h2>
+                        <div class="custom-select" style="width:180px;">
+<!--                            <select>-->
+<!--                                <option value="0">Nepal:</option>-->
+<!--                                <option value="1">Bahrain</option>-->
+<!--                                <option value="2">Bangladesh</option>-->
+<!--                                <option value="3">Malaysia</option>-->
+<!--                                <option value="4">Maldives</option>-->
+<!--                            </select>-->
+                            {{ form.country }}
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-12">
+                    <div class="inputbox">
+                        <h2>Street address *</h2>
+<!--                        <input type="text" name="text" placeholder="House number...">-->
+                        {{ form.street_add }}
+                    </div>
+                </div>
+
+
+                <div class="col-md-12">
+                    <div class="inputbox">
+                        <h2>Apartment, suite, unit etc. (optional)</h2>
+<!--                        <input type="text" name="text" placeholder="Apartment, suite,....">-->
+                        {{ form.apartment }}
+                    </div>
+                </div>
+
+
+                <div class="col-md-12">
+                    <div class="inputbox">
+                        <h2>Town / City *</h2>
+<!--                        <input type="text" name="text">-->
+                        {{ form.town }}
+                    </div>
+                </div>
+
+
+                <div class="col-md-12">
+                    <div class="inputbox">
+                        <h2>State / Zone *</h2>
+                        <div class="custom-select" style="width:180px;">
+
+                            {{ form.state }}
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-12">
+                    <div class="inputbox">
+                        <h2>Postcode / ZIP (optional)</h2>
+<!--                        <input type="text" name="text">-->
+                        {{ form.postcode }}
+                    </div>
+                </div>
+
+
+                <div class="col-md-12">
+                    <div class="inputbox">
+                        <h2>Phone *</h2>
+<!--                        <input type="text" name="text">-->
+                        {{ form.phone }}
+                    </div>
+                </div>
+
+
+                <div class="col-md-12">
+                    <div class="inputbox">
+                        <h2>Email address *</h2>
+<!--                        <input type="text" name="text">-->
+                        {{ form.email }}
+                    </div>
+                </div>
+
+
+                <h3><b>Additional information</b></h3>
+
+
+                <div class="col-md-12">
+                    <div class="inputbox">
+                        <h2>Order notes (optional)</h2>
+                        {{ form.information }}
+                    </div>
+                </div>
+
+
+<!--                <div class="form-group">-->
+
+<!--                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>-->
+<!--                </div>-->
+
+            </div>
+                 </form>
+
+            <div class="col-md-4">
+                <div class="tablecheck">
+                    <h1>Order Review</h1>
+                    {% for CartItem in carts %}
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+
+                            <th scope="col">Product</th>
+                            <th scope="col">Total</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+
+                            <td><b>Subtotal</b></td>
+                            <td>₨3,200.00</td>
+
+                        </tr>
+                        <tr>
+
+                            <td><b>Total</b></td>
+                            <td><b>₨{{ CartItem.price }}</b></td>
+
+                        </tr>
+                        <tr>
+
+                            <td colspan="2">
+                                <g>{{ CartItem.product.name }} × {{ CartItem.quantity }}</g>
+                            </td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                    {% endfor %}
+                </div>
+            </div>
+
+
+
+            <div class="col-md-4">
+                <div class="cartpag">
+                    <h1>Payment Methods</h1>
+                    <p>Cash on delivery<br><br>
+                        Pay with cash upon delivery.<br><br>
+
+                        Your personal data will be used to process your order, support your experience throughout this
+                        website, and for other purposes described in our
+                        <g>privacy policy.</g>
+                    </p>
+
+
+                    <h2>Grand Total: <b>₨ {{ total }} </b></h2>
+
+                    <button type="submit" form="billing_form" formmethod="post" value="Submit">
+                    Place Older</a></h3>
+                        </button>
+<!--                    <h3><a href="#" onclick="document.getElementById('billing_form').submit()"> Place Older</a></h3>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+
+{% endblock %}
+
+
+<!-- Product futtr_0 end-->
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="vendors/owl-carousel/owl.carousel.min.js"></script>
+<script src="js/theme.js"></script>
+<script type="text/javascript">

@@ -1,0 +1,80 @@
+{% extends 'acereadymade/base.html' %}
+
+{% load static %}
+{% block content %}
+<div class="new_account">
+  <form action="" accept-charset="utf-8" method="post" style="border:1px solid #ccc">{% csrf_token %}
+  <div class="container">
+    <div class="new_account1">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>LOGIN</h1>
+
+
+          <h2>Username or email address *</h2>
+          <div class="input-group flex-nowrap">
+            <div class="input-group-prepend">
+            </div>
+             {{ form.email }}
+<!--            <input type="text" class="form-control" aria-label="Username" aria-describedby="addon-wrapping">-->
+          </div>
+
+
+          <h2>Password *</h2>
+          <div class="input-group flex-nowrap">
+            <div class="input-group-prepend">
+            </div>
+             {{ form.password }}
+<!--            <input type="password" class="form-control" aria-label="Username" aria-describedby="addon-wrapping">-->
+          </div>
+        </div>
+
+
+
+        <div class="form-group">
+        </div>
+        <button type="submit" class="btn btn-primary">
+          <div class="singin01">Login</div>
+        </button>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="dropdownCheck">
+          <label class="form-check-label" for="dropdownCheck">
+            <div class="singin02">Remember me</div>
+          </label>
+        </div>
+
+
+        <div class="col-md-12">
+          <h5><a href="#">Lost your password?</a></h5>
+          <h5><a href="{% url 'acereadymade_app:signup' %}">Crate New Account</a></h5>
+          <h6>Sing up to</h6>
+
+        </div>
+
+
+        <div class="col-md-3">
+          <div class="futtorsingup">
+            <h4><a href="#">
+              <g></g>
+            </a>
+            </h4>
+            <h4><a href="#"></a></h4>
+            <h4><a href="#"></a></h4>
+            <h4><a href="#"></a></h4>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  </form>
+</div>
+{% endblock %}
+
+
+
+                
+
+ 
+
+

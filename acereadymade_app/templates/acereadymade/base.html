@@ -1,0 +1,371 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+{% block css %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100i,200,400&display=swap" rel="stylesheet">
+
+    <title>Page not found-Ace Radymade</title>
+</head>
+{% endblock %}
+<body>
+
+<div class="top_eng">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1">
+                <div class="dr_hover">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="{% static 'images/engicon.png' %}">ENG
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a href="#"> <img src="{% static 'images/engicon.png' %}">ENG</a><br>
+                        <a href="#"><img src="{% static 'images/engicon1.png' %}">FRH</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-1">
+                <div class="dr_hover">
+
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        USD
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a href="#">USD</a><br>
+                        <a href="#">EUR</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+            </div>
+
+            <div class="col-md-2">
+                <h1>Welcome to Ace Readymade</h1>
+            </div>
+
+            <div class="col-md-1">
+                <h2><a href="{% url 'acereadymade_app:myaccount' %}">MY ACCOUNT</a></h2>
+            </div>
+
+
+            <div class="col-md-1">
+                <h2><a href="{% url 'acereadymade_app:wishlist' %}">MY WISHLIST</a></h2>
+            </div>
+
+
+            <div class="col-md-1">
+                <h2><a href="{% url 'cart:cart_detail' %}">CART</a></h2>
+            </div>
+
+
+            <div class="col-md-1">
+
+
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+                        data-whatever="@getbootstrap"><h2><a href="#">LOG IN</a></h2></button>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+
+
+                            <div class="new_account">
+                                <div class="container">
+                                    <div class="new_account1">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h1>LOGIN</h1>
+
+
+                                                <h2>Username or email address *</h2>
+                                                <div class="input-group flex-nowrap">
+                                                    <div class="input-group-prepend">
+                                                    </div>
+                                                    <input type="text" class="form-control" aria-label="Username"
+                                                           aria-describedby="addon-wrapping">
+                                                </div>
+
+
+                                                <h2>Password *</h2>
+                                                <div class="input-group flex-nowrap">
+                                                    <div class="input-group-prepend">
+                                                    </div>
+                                                    <input type="password" class="form-control" aria-label="Username"
+                                                           aria-describedby="addon-wrapping">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">
+                                                <div class="singin01">Login</div>
+                                            </button>
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                                                <label class="form-check-label" for="dropdownCheck">
+                                                    <div class="singin02">Remember me</div>
+                                                </label>
+                                            </div>
+
+
+                                            <div class="col-md-12">
+                                                <h5><a href="#">Lost your password?</a></h5>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="wishlogo">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <a href="{% url 'acereadymade_app:index' %}"><img src="{% static 'images/flogo.png' %}"
+                                                                  class="img-fluid" alt="Responsive image"></a>
+            </div>
+
+
+            <div class="col-md-5">
+                <form method='GET' action="{% url 'search:searchResult' %}">
+                <div class="input-group mb-3">
+                    <div class="input-group">
+                        <input type="text" name="q" placeholder="Search for products" class="form-control"
+                               aria-label="Text  input with dropdown button" class="rounded-left">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">SELECT CATEGORY
+                            </button>
+                            <div class="dropdown-menu">
+                                {% for category in categories %}
+                                <a class="dropdown-item" href="{% url 'acereadymade_app:shop' %}">{{ category.name }}</a>
+                                {% endfor %}
+
+                            </div>
+                            <div class="input-group01">
+                                <form method='GET' action="{% url 'search:searchResult' %}">
+                                <button type="submit" value="{{ request.GET.q }}" class="btn btn-outline-dark"><b></b></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+
+
+            <div class="col-md-3">
+                <h4>Call Us for Wholesale Inquiries</h4>
+                <h5>+977-9869861393</h5>
+            </div>
+
+            {% block cart %}
+
+
+            <div class="col-md-1">
+                <div class="modal01">
+                    <div class="btn-group dropleft">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                            
+                        </button>
+                        <div class="dropdown-menu">
+                            <div class="gropcls">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <h1>0 ITEMS</h1>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <h1><a href="cart.php">VIEW CART</a></h1>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <h2>No products in the cart.</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+ {% endblock %}
+
+<div class="faqs">
+    <div class="container">
+        <div class="rwo">
+            <div class="col-md-12">
+                <div class="faqs1">
+                    <div class="d-flex flex-row bd-highlight mb-3">
+                        <div class="p-2 bd-highlight"><a href="{% url 'acereadymade_app:index' %}">HOME</a></div>
+                        <div class="p-2 bd-highlight"><a href="{% url 'acereadymade_app:shop' %}">SHOP</a></div>
+                        <div class="p-2 bd-highlight"><a href="{% url 'acereadymade_app:contact' %}">CONTACT US</a>
+                        </div>
+                        <div class="col-md-8">
+                        </div>
+                        <div class="col-md-1">
+                            <div class="p-5 bd-highlight"><a href="faqs.php"> FAQS</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--<div class="not_found">-->
+<!--  <div class="container">-->
+<!--    <div class="row">-->
+
+<!--      <div class="col-md-2">-->
+<!--      </div>-->
+
+<!--&lt;!&ndash;      <div class="col-md-6">&ndash;&gt;-->
+<!--&lt;!&ndash;        <h1>404 <b></b></h1>&ndash;&gt;-->
+<!--&lt;!&ndash;        <h2>We're sorry, but the page you were looking for doesn't exist.</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;      <div class="col-md-3">&ndash;&gt;-->
+<!--&lt;!&ndash;        <h3>Here are some useful links</h3>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;        <h4><a href="index.php"><g></g>Home</a></h4>&ndash;&gt;-->
+<!--&lt;!&ndash;        <h4><a href="about.php"><g></g>About Us</a></h4>&ndash;&gt;-->
+<!--&lt;!&ndash;        <h4><a href="faqs.php"><g></g>FAQ's</a></h4>&ndash;&gt;-->
+<!--&lt;!&ndash;        <h4><a href="sitemap.php"><g></g>Sitemap</a></h4>&ndash;&gt;-->
+<!--&lt;!&ndash;        <h4><a href="contact.php"><g></g>Contact Us</a></h4>&ndash;&gt;-->
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+{% block content %}
+{% endblock %}
+
+
+<div class="aceicon">
+    <div class="container">
+        <div class="row">
+            <h1>ace radymade</h1>
+        </div>
+    </div>
+</div>
+
+
+<div class="futtor">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h1>CONTACT US</h1>
+                <h2>
+                    <g></g>
+                    <b>Address:</b>Bhasepati, Lalitpur, Nepal
+                </h2>
+                <h2>
+                    <g></g>
+                    <b>Phone:</b>+977-9869861393
+                </h2>
+                <h2>
+                    <g></g>
+                    <b>Email:</b> info@acereadymade.com, sales@acereadymade.com, wholesale@acereadymade.com
+                </h2>
+            </div>
+
+
+            <div class="col-md-3">
+                <h1>SHOP</h1>
+                <h3><a href="{% url 'acereadymade_app:shop' %}">Shop</a></h3>
+                <h3><a href="{% url 'cart:cart' %}">Cart</a></h3>
+                <h3><a href="faqs.php">Checkout</a></h3>
+                <h3><a href="{% url 'acereadymade_app:wishlist' %}">Wishlist</a></h3>
+            </div>
+
+
+            <div class="col-md-3">
+                <h1>USEFUL LINKS</h1>
+                <h3><a href="{% url 'acereadymade_app:index' %}">Home</a></h3>
+                <h3><a href="faqs.php">Privacy Policy</a></h3>
+                <h3><a href="faqs.php">Return Policy</a></h3>
+                <h3><a href="faqs.php">Terms & Conditions</a></h3>
+            </div>
+
+
+            <div class="col-md-3">
+                <h1>FOLLOW US</h1>
+                <h4><a href="#">
+                    <g></g>
+                </a>
+                </h4>
+                <h4><a href="#"></a></h4>
+                <h4><a href="#"></a></h4>
+                <h4><a href="#"></a></h4>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="futtorlast">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1">
+                <img src="{% static 'images/sticky_logo.png' %}">
+            </div>
+
+            <div class="col-md-8">
+            </div>
+
+            <div class="col-md-3">
+                <h1>© 2019 Ace Readymade. All Rights Reserved.</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block script %}
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+{% endblock %}
+</body>
+</html>

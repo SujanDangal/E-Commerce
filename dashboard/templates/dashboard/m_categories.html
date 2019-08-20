@@ -1,0 +1,136 @@
+{% extends 'dashboard/base.html' %}
+{% block content %}
+{% block table %}
+<div class="app-content content container-fluid">
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="content-header-left col-md-6 col-xs-12 mb-1">
+                <h2 class="content-header-title"></h2>
+            </div>
+            <div class="content-header-right breadcrumbs-right breadcrumbs-top col-md-6 col-xs-12">
+                <div class="breadcrumb-wrapper col-xs-12">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a>
+                        </li>
+                        <li class="breadcrumb-item"><a href="#">Tables</a>
+                        </li>
+                        <li class="breadcrumb-item active">Basic Tables
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="content-body"><!-- Basic Tables start -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Add Categories</h4>
+                            <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+                            <div class="heading-elements">
+                                <ul class="list-inline mb-0">
+                                    <li><a href="{% url 'dashboard:cat_add_modal' %}" data-action="#"><i
+                                            class="icon-plus4"></i></a></li>
+                                    <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+                                    <li><a data-action="reload"><i class="icon-reload"></i></a></li>
+                                    <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+                                    <li><a data-action="close"><i class="icon-cross2"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body collapse in">
+                            <div class="card-block card-dashboard">
+                                <p class="card-text"></p>
+                                <p><span class="text-bold-600">Category: </span> Select category to change</p>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>id</th>
+                                            <th>Name</th>
+                                            <th>Slug</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for category in categories %}
+                                        <tr>
+                                            <th scope="row">{{category.id}}</th>
+                                            <td>{{category.name}}</td>
+                                            <td>{{category.slug}}</td>
+                                            <td>
+                                                <div class="col-lg-4 col-md-6 col-sm-12">
+                                                    <div class="form-group">
+
+                                                        <!-- Button trigger modal -->
+                                                        <button type="button"
+                                                                class="btn btn-outline-primary block btn-lg"
+                                                                data-toggle="modal" data-target="#default{{ category.id }}">
+                                                            <div class="fonticon-wrap">
+                                                                <i class="icon-delete"></i>
+                                                            </div>
+                                                        </button>
+                                                        <br></br>
+                                                        <button type="button"
+                                                                class="btn btn-outline-primary block btn-lg"
+                                                                data-toggle="#" data-target="#default">
+                                                            <div class="fonticon-wrap">
+                                                                <a href="{% url 'dashboard:edit_category' category.id %}"
+                                                                   data-action="#">
+                                                                    <i class="icon-edit"></i></a>
+                                                            </div>
+                                                        </button>
+
+<!--                                                         Modal-->
+                                                        <div class="modal fade text-xs-left" id="default{{ category.id }}" tabindex="-1"
+                                                             role="dialog" aria-labelledby="myModalLabel1"
+                                                             aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close"
+                                                                                data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                        <h4 class="modal-title" id="myModalLabel1"></h4>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <h5>Are you sure?
+                                                                        </h5>
+                                                                        <p>Are you sure you want to delete the selected
+                                                                            category? All of the following objects and
+                                                                            their related items will be deleted:
+                                                                            {{ category.name }}
+
+                                                                        </p>
+
+                                                                    </div>
+                                                                    <form class="form" method="post" action="{% url 'dashboard:delete_category' category.id %}">{% csrf_token %}
+                                                                        <div class="modal-footer">
+                                                                            <button type="button"
+                                                                                    class="btn grey btn-outline-secondary"
+                                                                                    data-dismiss="modal">No take me back
+                                                                            </button>
+                                                                            <button type="submit"
+                                                                                    class="btn btn-outline-primary">Yes,
+                                                                                I'm
+                                                                                sure changes
+                                                                            </button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            {% endblock %}
+                            {% endblock %}
+                            </html>
+                            </div>

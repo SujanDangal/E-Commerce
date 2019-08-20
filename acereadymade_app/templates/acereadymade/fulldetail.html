@@ -1,0 +1,382 @@
+{% extends 'acereadymade/base.html' %}
+{% load static %}
+<!doctype html>
+<html lang="en">
+{% block css %}
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+
+        <link href="{% static 'vendors/line-icon/css/simple-line-icons.css' %}" rel="stylesheet">
+        <link href="{% static 'vendors/elegant-icon/style.css' %}" rel="stylesheet">
+
+        <link href="{% static 'vendors/bootstrap-selector/css/bootstrap-select.min.css' %}" rel="stylesheet">
+
+
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+        <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+        <link href="{% static 'vendors/owl-carousel/owl.carousel.min.css' %}" rel="stylesheet">
+
+
+    <title>Sahiba oceanic vogue heavy-Ace Radymade</title>
+  </head>
+      {% endblock %}
+
+
+
+
+
+
+
+{% block cart %}
+    <div class="col-md-1">
+      <div class="modal01">
+<div class="btn-group dropleft">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+     <g>1</g>
+  </button>
+  <div class="dropdown-menu">
+    <div class="gropcls">
+      <div class="row">
+        <div class="col-md-5">
+        <h1>1 ITEMS</h1>
+        </div>
+        <div class="col-md-7">
+        <h1><a href="{% url 'cart:add_cart' product.id %}">VIEW CART</a></h1>
+        </div>
+        <div class="col-md-12">
+          <h2><b>{{ product.name }}</b>
+1 × ₨2,000.00</h2>
+<img src="{{product.image.url}} ">
+<p>SUBTOTAL: <b>₨2,000.00</b></p>
+<h6><a href="{% url 'cart:proceedcheckout' %}">CHECKOUT</a></h6>
+        </div>
+  </div>
+  </div>
+    </div>
+        </div>
+            </div>
+                </div>
+                    </div>
+                        </div>
+                            </div>
+
+
+
+{% endblock %}
+
+
+
+{% block content %}
+            <div class="contacthome">
+            <div class="home_icon">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-3">
+                    <h1><a href="index.php"></a><g><a href="shop.php">Shop</a></g> Sahiba oceanic vogue heavy</h1><g></g>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="sucvevcart">
+            <div class="container">
+              <div class="sucvevcart_1">
+              <div class="row">
+                <div class="col-md-2">
+                  <h1><a href="#">View cart</a></h1>
+                </div>
+                <div class="ccol-md-6">
+                  <h2>“SAHIBA OCEANIC VOGUE HEAVY FANCY SAREE WITH BLOUSE” has been added to your cart.</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+
+
+
+
+
+          <div class="add_file">
+            <div class="container">
+              <div class="row">
+               <div class="col-md-6">
+                <div class="add_file_1">
+                  <h1>-38</h1>
+                <img src="{{product.image.url}} ">
+              </div>
+            </div>
+
+
+            <div class="col-md-6">
+              <div class="priceshop">
+              <h2>{{ product.name }}</h2>
+              <h3>     <g> <a href="reviews_yet.php">( There are no reviews yet. )</a></g></h3>
+              <h4><s>₨ 3,400.00</s> <g>₨ {{ product.price }}</g></h4>
+              <h5><b>Saree Fabric:</b> Fancy</h5>
+              <h5><b>Blouse Fabric:</b> Fancy</h5>
+              <h5><b>Type of Saree:</b>  Embroidered</h5>
+              <h5><b>Sleeves Type:</b> Half Sleeves</h5>
+              <h5><b>Wash Care:</b> Dry Wash Only</h5>
+
+              <h6>Availability: <b>{{ product.stock }} in stock</b></h6>
+            </div>
+
+
+            <div class="saree_addtocart">
+              <div class="row">
+                <div class="col-md-3">
+                  <a href="{% url 'cart:add_cart' product.id %}"><h1><g></g>ADD TO CART</h1></a>
+                </div>
+
+                <div class="col-md-1">
+                  <a href="#"><h2></h2></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="dubelimg">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2">
+            <a href="#"><img src="{% static 'images/AR-A3.-150x150.jpg' %}"></a>
+          </div>
+
+
+          <div class="col-md-2">
+            <a href="#"><img src="{% static 'images/AR-A3-150x150.jpg' %}"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="shop_desc">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="shop_desc_1">
+            <li><a href="#">DESCRIPTION</a></li>
+            <li><a href="#">SIZE GUIDE</a></li>
+            <li><a href="#">REVIEWS (0)</a></li>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+              <div class="priceshop_01">
+                <div class="container">
+                  <div class="col-md-12">
+              <h5><b>Saree Fabric:</b> Fancy</h5>
+              <h5><b>Blouse Fabric:</b> Fancy</h5>
+              <h5><b>Type of Saree:</b>  Embroidered</h5>
+              <h5><b>Sleeves Type:</b> Half Sleeves</h5>
+              <h5><b>Wash Care:</b> Dry Wash Only</h5>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+ <!-- our_latest_product_start -->
+
+
+ <div class="bckcart">
+
+ <section class="our_latest_product">
+            <div class="container">
+                <div class="s_m_title">
+                </div>
+                <div class="l_product_slider owl-carousel">
+                    <div class="item">
+                        <div class="l_product_item">
+                            <div class="l_p_img">
+                                <img src="{% static 'images/MG_1901-300x300.jpg' %}" alt="">
+
+                            </div>
+                            <div class="l_p_text">
+                                <ul>
+                                    <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
+                                    <li><a class="add_cart_btn" href="addtocart_01.php">Add To Cart</a></li>
+                                    <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
+                                </ul>
+                                <h4>Brown/Blue Floral Printed Silk Saree<br>With Attached Blowse</h4>
+                                <h5><del>₨ 3,500.00</del>₨ 2,800.00</h5>
+                            </div>
+                        </div>
+                        <div class="l_product_item">
+                            <div class="l_p_img">
+                                <img src="{% static 'images/ARWSD-O80-300x300.jpg' %}" alt="">
+
+                            </div>
+                            <div class="l_p_text">
+                               <ul>
+                                    <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
+                                    <li><a class="add_cart_btn" href="addtocart_01.php">Add To Cart</a></li>
+                                    <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
+                                </ul>
+                                <h4>Red/Blue Floral Printed Silk Saree<br>With Attached Blowse</h4>
+                                <h5><del>₨ 3,400.00</del>₨ 2,900.00</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="l_product_item">
+                            <div class="l_p_img">
+                                <img src="{% static 'images/AR-A8.-1-300x300.jpg' %}" alt="">
+
+                            </div>
+                            <div class="l_p_text">
+                               <ul>
+                                    <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
+                                    <li><a class="add_cart_btn" href="addtocart_01.php">Add To Cart</a></li>
+                                    <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
+                                </ul>
+                                <h4>Broun/Blue Floral Printed Silk Saree<br>With Attached Blowse</h4>
+                                <h5><del>₨ 2,500.00</del>₨ 2,100.00</h5>
+                            </div>
+                        </div>
+                        <div class="l_product_item">
+                            <div class="l_p_img">
+                                <img src="{% static 'images/ARWSD-O78-300x300.jpg' %}" alt="">
+
+                            </div>
+                            <div class="l_p_text">
+                               <ul>
+                                    <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
+                                    <li><a class="add_cart_btn" href="addtocart_01.php">Add To Cart</a></li>
+                                    <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
+                                </ul>
+                                <h4>Red/Blue Floral Printed Silk Saree<br>With Attached Blowse</h4>
+                                <h5><del>₨ 3,900.00</del>₨ 3,400.00</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="l_product_item">
+                            <div class="l_p_img">
+                                <img src="{% static 'images/ARWSD-O73-300x300.jpg' %}" alt="">
+
+                            </div>
+                            <div class="l_p_text">
+                               <ul>
+                                    <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
+                                    <li><a class="add_cart_btn" href="addtocart_01.php">Add To Cart</a></li>
+                                    <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
+                                </ul>
+                                <h4>Brown/Blue Floral Printed Silk Saree<br>With Attached Blowse</h4>
+                                <h5><del>₨ 3,200.00</del>₨ 2,600.00</h5>
+                            </div>
+                        </div>
+                        <div class="l_product_item">
+                            <div class="l_p_img">
+                                <img src="{% static 'images/ARWSI-O10.-300x300.jpg' %}" alt="">
+
+                            </div>
+                            <div class="l_p_text">
+                               <ul>
+                                    <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
+                                    <li><a class="add_cart_btn" href="addtocart_01.php">Add To Cart</a></li>
+                                    <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
+                                </ul>
+                                <h4>Yellow/Blue Floral Printed Silk Saree<br>With Attached Blowse</h4>
+                                <h5><del>₨ 3,300.00</del>₨ 2,400.00</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="l_product_item">
+                            <div class="l_p_img">
+                                <img src="{% static 'images/ARWSD-O74-300x300.jpg' %}" alt="">
+
+                            </div>
+                            <div class="l_p_text">
+                               <ul>
+                                    <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
+                                    <li><a class="add_cart_btn" href="addtocart_01.php">Add To Cart</a></li>
+                                    <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
+                                </ul>
+                                <h4>Red/Blue Floral Printed Silk Saree<br>With Attached Blowse</h4>
+                                <h5><del>₨ 3,800.00</del>₨ 3,300.00</h5>
+                            </div>
+                        </div>
+                        <div class="l_product_item">
+                            <div class="l_p_img">
+                                <img src="{% static 'images/ARWSI-O10.-300x300 (1).jpg' %}" alt="">
+
+                            </div>
+                            <div class="l_p_text">
+                               <ul>
+                                    <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
+                                    <li><a class="add_cart_btn" href="addtocart_01.php">Add To Cart</a></li>
+                                    <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
+                                </ul>
+                                <h4>Gray/Blue Floral Printed Silk Saree<br>With Attached Blowse</h4>
+                                <h5><del>₨ 3,400.00</del>₨ 2,600.00</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           </div>
+     </section>
+</div>
+{% endblock %}
+
+
+                <!-- our_latest_product_end -->
+
+
+
+
+  <!-- Product section -->
+
+
+
+
+
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+{% block script %}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'vendors/owl-carousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/theme.js' %}"></script>
+      {% endblock %}
+  </body>
+</html>

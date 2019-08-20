@@ -1,0 +1,63 @@
+{% extends 'dashboard/base.html' %}
+{% block content %}
+<div class="row match-height">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title" id="basic-layout-form-center">Event Registration</h4>
+                <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+                <!--                <div class="heading-elements">-->
+                <!--                    <ul class="list-inline mb-0">-->
+                <!--                        <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>-->
+                <!--                        <li><a data-action="reload"><i class="icon-reload"></i></a></li>-->
+                <!--                        <li><a data-action="expand"><i class="icon-expand2"></i></a></li>-->
+                <!--                        <li><a data-action="close"><i class="icon-cross2"></i></a></li>-->
+                <!--                    </ul>-->
+                <!--                </div>-->
+            </div>
+            <div class="card-body collapse in">
+                <div class="card-block">
+
+                    <!--                    <div class="card-text">-->
+                    <!--                        <p>This example shows a way to center your form in the card. Here we have used <code>col-md-6-->
+                    <!--                            offset-md-3</code> classes to center the form in a full width card. User can always change-->
+                    <!--                            those classes-->
+                    <!--                            according to width and offset requirements. This example also uses form action buttons in-->
+                    <!--                            the center-->
+                    <!--                            bottom position of the card.</p>-->
+                    <!--                    </div>-->
+                    <form action="" accept-charset="utf-8" method="post">{% csrf_token %}
+                    <form class="form">
+                        <div class="row">
+                            <div class="col-md-6 offset-md-3">
+                                <div class="form-body">
+                                    <div class="form-group">
+                                        <label for="eventInput1">Name</label>
+
+                                        {{ form.name }}
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="eventInput2">Slug</label>
+
+                                        {{ form.slug }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions center">
+                            <button type="button" class="btn btn-warning mr-1">
+                                <i class="icon-cross2"></i> Cancel
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="icon-check2"></i> Save
+                            </button>
+                        </div>
+                    </form>
+                </form>
+
+                </div>
+            </div>
+            {% endblock %}
+            {% include 'dashboard/m_categories.html' %}
