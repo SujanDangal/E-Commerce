@@ -4,13 +4,43 @@ from django.views.generic import TemplateView, View, FormView, ListView, DetailV
 from django.views.generic.edit import UpdateView
 from acereadymade_app.models import *
 from cart.models import *
-from .forms import AddCategoryForm, AddProductForm, EditCategoryForm
+from .forms import AddCategoryForm, AddProductForm, EditCategoryForm, AdminLogInForm
 from django.urls import reverse_lazy
+from django.contrib.auth import login, authenticate, logout
 from PIL import Image
 import os
 
 
 # Create your views here.
+class Login(View):
+    success_url = reverse_lazy('dashboard:dashboard')
+    template_name = 'dashboard/login-simple.html'
+    form_class = AdminLogInForm
+
+    def get(self, request):
+        form = self.form_class()
+        return render(request, self.template_name, {'login_error': 'Please Login to Continue', 'form': form})
+
+    def post(self, request):
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        username = User.objects.get(email=str(email)).username
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect(self.success_url)
+        else:
+            form = self.form_class()
+            return render(request, 'dashboard/login-simple.html', {'form': form})
+
+
+class LogoutView(View):
+    success_url = reverse_lazy('dashboard:login')
+
+    def get(self, request):
+        logout(request)
+        return redirect(self.success_url)
+
 
 class dashboard(TemplateView):
     template_name = 'dashboard/index.html'

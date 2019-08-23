@@ -163,21 +163,20 @@
                                                 <h1>{{ total_item }} ITEMS</h1>
                                             </div>
                                             <div class="col-md-7">
-                                                {% if user.is_authenticated %}
+                                                {% if user.is_authenticated  %}
                                                 <h1><a href="{% url 'cart:cart_detail' %}">VIEW CART</a></h1>
                                                 {% else %}
                                                 <h1><a href="{% url 'acereadymade_app:login' %}">VIEW CART</a></h1>
                                                 {% endif %}
                                             </div>
-                                            <div class="col-md-12">
+<!--                                            <div class="col-md-12">-->
 <!--                                                <h2><b>{{ product.name }}</b>-->
 <!--                                                    1 × ₨2,000.00</h2>-->
 <!--                                                <img src="{{product.image.url}} ">-->
 <!--                                                <p>SUBTOTAL: <b>₨2,000.00</b></p>-->
 <!--                                                <h6><a href="{% url 'cart:proceedcheckout' %}">CHECKOUT</a></h6>-->
-                                                {% if user.is_authenticated %}
+                                                {% if user.is_authenticated and total_item is not 0 %}
                                                 <h6><a href="{% url 'cart:proceedcheckout' %}">CHECKOUT</a></h6>
-
                                                 {% endif %}
                                             </div>
                                         </div>
@@ -369,7 +368,7 @@
 
               </div>
             </div>
-              <h3><b><a href="shop.php">Shop Now</a></b></h3>
+              <h3><b><a href="{% url 'acereadymade_app:product_list' %}">Shop Now</a></b></h3>
               </div>
 
               <div class="col-md-4">
@@ -415,7 +414,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="gown">
-                    <a href="faqs.php"><img src="{% static 'images/img_01.jpg' %}" class="img-fluid"
+                    <a href="{% url 'acereadymade_app:product_list_by_category' gown.id gown.slug %}"><img src="{% static 'images/img_01.jpg' %}" class="img-fluid"
                                             alt="Responsive image"></a>
                     <h1><b>GOWN</b></h1>
                     <h2>12 produs</h2>
@@ -423,24 +422,24 @@
             </div>
             <div class="col-md-3">
                 <div class="kurti">
-                    <a href="faqs.php"><img src="{% static 'images/kurti.jpg' %}"></a>
+                    <a href="{% url 'acereadymade_app:product_list_by_category' kurtha_salwar.id kurtha_salwar.slug %}"><img src="{% static 'images/kurti.jpg' %}"></a>
                     <h1><b>KURTA SALWAR</b></h1>
                     <h2>40 products</h2>
                 </div>
                 <div class="kurti_1">
-                    <a href="faqs.php"><img src="{% static 'images/onepess.jpg' %}"></a>
-                    <h1><b>ONE PICE</b></h1>
+                    <a href="{% url 'acereadymade_app:product_list_by_category' one_piece.id one_piece.slug %}"><img src="{% static 'images/onepess.jpg' %}"></a>
+                    <h1><b>ONE PIECE</b></h1>
                     <h2>9 products</h2>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="kurti">
-                    <a href="faqs.php"><img src="{% static 'images/sareeacer.jpg' %}"></a>
+                    <a href="{% url 'acereadymade_app:product_list_by_category' saree.id saree.slug %}"><img src="{% static 'images/sareeacer.jpg' %}"></a>
                     <h1><b>Saree</b></h1>
                     <h2>33 products</h2>
                 </div>
                 <div class="kurti_1">
-                    <a href="faqs.php"><img src="{% static 'images/kurtitwo.jpg' %}"></a>
+                    <a href="{% url 'acereadymade_app:product_list_by_category' kurtha.id kurtha.slug %}"><img src="{% static 'images/kurtitwo.jpg' %}"></a>
                     <h1><b>Kurti</b></h1>
                     <h2>39 products</h2>
                 </div>

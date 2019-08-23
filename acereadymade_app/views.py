@@ -32,12 +32,17 @@ class IndexView(ListView):
         context['topkurtha_products'] = Product.objects.filter(available=True, topkurtha=True).order_by('-created')[0:4]
         context['topfeatured_products'] = Product.objects.filter(available=True, topfeatured=True).order_by('-created')[0:4]
         context['categories'] = Category.objects.all()
+        context['gown'] = Category.objects.get(name='GOWN')
+        context['kurtha_salwar'] = Category.objects.get(name='KURTHA SALWAR')
+        context['saree'] = Category.objects.get(name='SAREE')
+        context['one_piece'] = Category.objects.get(name='ONE PIECE')
+        context['kurtha'] = Category.objects.get(name='KURTHA')
+        print(99999999999999999999999999999,self.request.user)
         if self.request.user.is_authenticated:
             cart = Cart.objects.get(user=self.request.user)
             cart_item_count = CartItem.objects.filter(cart=cart).count
             context['total_item'] = cart_item_count
         return context
-
 
 
 class CustomerSignUpView(View):
@@ -64,7 +69,7 @@ class CustomerSignUpView(View):
 
 
             Customer.objects.create(user=user).save()
-            # Cart.objects.create(user=user)
+            Cart.objects.create(user=user)
 
             print(type(user), '111111111', 's', '222222222', type('s'))
             current_site = get_current_site(request)
@@ -89,6 +94,7 @@ class CustomerSignUpView(View):
             return HttpResponse('Please Click the link to activate in your Gmail Inbox')
 
         return render(request, 'acereadymade/create-new.html')
+
 
 class LogoutView(View):
     success_url = reverse_lazy('acereadymade_app:login')
@@ -164,11 +170,15 @@ class ShopView(TemplateView):
 
 class BaseView(ListView):
     template_name = 'acereadymade/base.html'
-    model = Category
+    model = Product
 
     def get_context_data(self, **kwargs):
         context = super(BaseView, self).get_context_data(**kwargs)
         context['categories'] = Category.objects.all()
+        if self.request.user.is_authenticated:
+            cart = Cart.objects.get(user=self.request.user)
+            cart_item_count = CartItem.objects.filter(cart=cart).count
+            context['total_item'] = cart_item_count
         return context
 
 

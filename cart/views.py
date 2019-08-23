@@ -15,9 +15,17 @@ from .forms import OrderForm
 
 
 
-#
-# class DetailView(TemplateView):
-#     template_name = 'cart/detail.html'
+
+
+class DetailView(ListView):
+    template_name = 'cart/detail.html'
+    model = Product
+
+    def get_context_data(self, **kwargs):
+        context = super(DetailView, self).get_context_data(**kwargs)
+        context['featured_products'] = Product.objects.filter(available=True, featured=True).order_by('-created')[0:5]
+
+        return context
 
 
 class CartView(ListView):

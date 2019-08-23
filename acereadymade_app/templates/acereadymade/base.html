@@ -12,7 +12,7 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100i,200,400&display=swap" rel="stylesheet">
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
     <title>Page not found-Ace Radymade</title>
 </head>
 {% endblock %}
@@ -191,22 +191,31 @@
             <div class="col-md-1">
                 <div class="modal01">
                     <div class="btn-group dropleft">
-                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                            
-                        </button>
+                        <div class="btn-group dropleft">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                    
+                                    <g>{{ total_item }}</g>
+                                </button>
                         <div class="dropdown-menu">
                             <div class="gropcls">
                                 <div class="row">
                                     <div class="col-md-5">
-                                        <h1>0 ITEMS</h1>
+                                        <h1>{{ total_item }} ITEMS</h1>
                                     </div>
                                     <div class="col-md-7">
-                                        <h1><a href="cart.php">VIEW CART</a></h1>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <h2>No products in the cart.</h2>
-                                    </div>
+                                                {% if user.is_authenticated  %}
+                                                <h1><a href="{% url 'cart:cart_detail' %}">VIEW CART</a></h1>
+                                                {% else %}
+                                                <h1><a href="{% url 'acereadymade_app:login' %}">VIEW CART</a></h1>
+                                                {% endif %}
+                                            </div>
+                                    {% if user.is_authenticated and total_item is not 0 %}
+                                    <h6><a href="{% url 'cart:proceedcheckout' %}">CHECKOUT</a></h6>
+                                    {% endif %}
+<!--                                    <div class="col-md-12">-->
+<!--                                        <h2>No products in the cart.</h2>-->
+<!--                                    </div>-->
                                 </div>
                             </div>
                         </div>

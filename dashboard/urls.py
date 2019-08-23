@@ -16,5 +16,6 @@ urlpatterns = [
     path('category/delete/<int:category_id>/', DeleteCategory.as_view(), name='delete_category'),
     path('user/delete/<int:user_id>/', DeleteUser.as_view(), name='delete_user'),
     path('edit_category/<int:category_id>/', EditCategory.as_view(), name='edit_category'),
+    path('login/', Login.as_view(), name='login'),
     # path('edit_category/<int:category_id>/', EditCategory.as_view(), name='edit_category'),
 ]

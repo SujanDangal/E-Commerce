@@ -5,6 +5,14 @@ from acereadymade_app.models import *
 from django.core.files.images import ImageFile
 
 
+class AdminLogInForm(forms.Form):
+    username = forms.CharField(max_length=150)
+    password = forms.CharField(max_length=150, widget=forms.PasswordInput)
+
+    class Meta:
+        models = User
+        fields = ('username', 'passwords', )
+
 
 class AddCategoryForm(forms.Form):
     name = forms.CharField(max_length=150)
@@ -12,6 +20,7 @@ class AddCategoryForm(forms.Form):
 
     class Meta:
         fields = ('name', 'slug')
+
 
 class AddProductForm(forms.Form):
     category = forms.ModelChoiceField(queryset=Category.objects.all())
