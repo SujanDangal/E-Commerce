@@ -3,29 +3,37 @@
 {% load static %}
 {% block content %}
 <div class="new_account">
-  <form action="" accept-charset="utf-8" method="post" style="border:1px solid #ccc">{% csrf_token %}
+  <form action="" accept-charset="utf-8" method="post">{% csrf_token %}
   <div class="container">
+
     <div class="new_account1">
+
       <div class="row">
         <div class="col-md-12">
+
           <h1>LOGIN</h1>
 
 
           <h2>Username or email address *</h2>
+
           <div class="input-group flex-nowrap">
+<!--            <form action="" accept-charset="utf-8" method="post">{% csrf_token %}-->
+
             <div class="input-group-prepend">
             </div>
-             {{ form.email }}
-<!--            <input type="text" class="form-control" aria-label="Username" aria-describedby="addon-wrapping">-->
+<!--            <form action="" accept-charset="utf-8" method="post">{% csrf_token %}-->
+
+            <input type="text" class="form-control" {{ form.email }}<br>
           </div>
 
 
           <h2>Password *</h2>
           <div class="input-group flex-nowrap">
+            <form action="" accept-charset="utf-8" method="post">{% csrf_token %}
             <div class="input-group-prepend">
             </div>
-             {{ form.password }}
-<!--            <input type="password" class="form-control" aria-label="Username" aria-describedby="addon-wrapping">-->
+
+            <input type="password" class="form-control" {{ form.password }}
           </div>
         </div>
 
@@ -68,6 +76,7 @@
     </div>
   </div>
   </form>
+
 </div>
 {% endblock %}
 

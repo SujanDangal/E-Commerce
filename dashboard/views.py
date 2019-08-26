@@ -7,6 +7,8 @@ from cart.models import *
 from .forms import AddCategoryForm, AddProductForm, EditCategoryForm, AdminLogInForm
 from django.urls import reverse_lazy
 from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.models import User
+
 from PIL import Image
 import os
 
@@ -22,11 +24,11 @@ class Login(View):
         return render(request, self.template_name, {'login_error': 'Please Login to Continue', 'form': form})
 
     def post(self, request):
-        email = request.POST.get('email')
+        username = request.POST.get('username')
         password = request.POST.get('password')
-        username = User.objects.get(email=str(email)).username
+        print(555555555555555555,request.POST)
         user = authenticate(username=username, password=password)
-        if user is not None:
+        if user is not None and user.is_superuser:
             login(request, user)
             return redirect(self.success_url)
         else:
@@ -37,6 +39,7 @@ class Login(View):
 class LogoutView(View):
     success_url = reverse_lazy('dashboard:login')
 
+
     def get(self, request):
         logout(request)
         return redirect(self.success_url)
@@ -44,6 +47,8 @@ class LogoutView(View):
 
 class dashboard(TemplateView):
     template_name = 'dashboard/index.html'
+
+
 
 
 class base(TemplateView):
@@ -88,10 +93,8 @@ class order(TemplateView):
         context = super(order, self).get_context_data(**kwargs)
         # print(222222222222222222222222222222222222222222222222)
         # context['categories'] = Category.objects.all()
-        context['orders'] = Order.objects.filter(user=self.request.user)
+        context['orders'] = Order.objects.all()
         return context
-
-
 
 
 class users(TemplateView):

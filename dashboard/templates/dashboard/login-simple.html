@@ -59,17 +59,17 @@
 <!--                    <form class="form-horizontal form-simple" accept-charset="utf-8" method="post" action="{% url 'dashboard:dashboard' %}" novalidate>{% csrf_token %}-->
                     <form action="" accept-charset="utf-8" method="post">{% csrf_token %}
                         <fieldset class="form-group position-relative has-icon-left mb-0">
-<!--                            <input type="text" class="form-control form-control-lg input-lg" id="user-name" placeholder="Your Username" required>-->
-                            {{ form.username }}
+                            <input class="form-control form-control-lg input-lg" type="text" {{ form.username }}<br>
+
                             <div class="form-control-position">
-<!--                                <i class="icon-head"></i>-->
+                                <i class="icon-head"></i>
                             </div>
                         </fieldset>
                         <fieldset class="form-group position-relative has-icon-left">
-<!--                            <input type="password" class="form-control form-control-lg input-lg" id="user-password" placeholder="Enter Password" required>-->
-                            {{ form.password }}
+                            <input type="password" class="form-control form-control-lg input-lg" {{ form.password }}
+
                             <div class="form-control-position">
-<!--                                <i class="icon-key3"></i>-->
+                                <i class="icon-key3"></i>
                             </div>
                         </fieldset>
                         <fieldset class="form-group row">

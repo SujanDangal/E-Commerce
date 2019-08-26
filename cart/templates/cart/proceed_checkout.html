@@ -47,7 +47,7 @@
                         <g><a href="shop.php">Shop</a></g>
                         /Checkout
                     </h1>
-                    <g></g>
+              Subtotal      <g></g>
                 </div>
             </div>
         </div>
@@ -240,13 +240,13 @@
                         <tr>
 
                             <td><b>Subtotal</b></td>
-                            <td>₨3,200.00</td>
+                            <td>₨{{ CartItem.product.price }}</td>
 
                         </tr>
                         <tr>
 
                             <td><b>Total</b></td>
-                            <td><b>₨{{ CartItem.price }}</b></td>
+                            <td><b>₨{{ CartItem.product.price }} × {{ CartItem.quantity }} </b></td>
 
                         </tr>
                         <tr>
